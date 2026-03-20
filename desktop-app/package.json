@@ -1,0 +1,98 @@
+{
+  "name": "awe-system-desktop",
+  "version": "1.0.0",
+  "description": "AWE System Desktop - Automated Writing Evaluation with Local LLM Support",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:msi": "electron-builder --win msi",
+    "build:store": "electron-builder --win appx",
+    "postinstall": "electron-builder install-app-deps",
+    "python:setup": "pip install -r python-backend/requirements.txt",
+    "python:start": "python python-backend/server.py"
+  },
+  "author": {
+    "name": "Dr. Waleed Mandour",
+    "email": "w.abumandour@squ.edu.om"
+  },
+  "license": "MIT",
+  "homepage": "https://waleedmandour.org/projects/awe-system",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/waleedmandour/awe-system"
+  },
+  "build": {
+    "appId": "com.squ.awe-system",
+    "productName": "AWE System",
+    "copyright": "Copyright © 2026 Dr. Waleed Mandour, Sultan Qaboos University",
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets"
+    },
+    "files": [
+      "src/**/*",
+      "python-backend/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "python-backend",
+        "to": "python-backend",
+        "filter": ["**/*"]
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        },
+        {
+          "target": "msi",
+          "arch": ["x64"]
+        },
+        {
+          "target": "appx",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "assets/icon.ico",
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "assets/icon.ico",
+      "uninstallerIcon": "assets/icon.ico",
+      "installerHeaderIcon": "assets/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "AWE System"
+    },
+    "appx": {
+      "applicationId": "SQU.AWESystem",
+      "identityName": "SQU.AWESystem",
+      "publisher": "CN=Sultan Qaboos University",
+      "publisherDisplayName": "Sultan Qaboos University",
+      "displayName": "AWE System - Writing Evaluation",
+      "description": "Automated Writing Evaluation System with Local LLM Support"
+    }
+  },
+  "dependencies": {
+    "electron-store": "^8.1.0",
+    "electron-updater": "^6.1.7",
+    "express": "^4.18.2",
+    "axios": "^1.6.2",
+    "cors": "^2.8.5",
+    "systeminformation": "^5.21.20"
+  },
+  "devDependencies": {
+    "electron": "^28.1.0",
+    "electron-builder": "^24.9.1"
+  }
+}

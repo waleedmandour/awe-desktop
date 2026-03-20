@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Build output
+awe-desktop/release/
+awe-desktop/node_modules/
+*.zip
+*.tar.gz
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Large files (use GitHub Releases instead)
+*.exe
+*.msi
+*.dmg
+*.AppImage
