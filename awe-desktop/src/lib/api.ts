@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosProgressEvent } from 'axios';
 import type { SystemInfo, LLMModel, OCRResult, AssessmentResult, LLMProvider, CustomEndpoint } from '../types';
 
 // Get the Python backend URL from Electron or use default
@@ -56,7 +56,7 @@ export const getLLMProviders = async (): Promise<LLMProvider[]> => {
 export const pullModel = async (modelName: string, onProgress?: (progress: number) => void): Promise<void> => {
   const client = await createApiClient();
   await client.post('/api/llm/ollama/pull', { model: modelName }, {
-    onDownloadProgress: (progressEvent) => {
+    onDownloadProgress: (progressEvent: AxiosProgressEvent) => {
       if (onProgress && progressEvent.total) {
         const progress = Math.round((progressEvent.loaded * 100) / progressEvent.total);
         onProgress(progress);

@@ -17,13 +17,13 @@
     "dist": "npm run build && electron-builder --publish=never"
   },
   "dependencies": {
+    "axios": "^1.13.6",
+    "framer-motion": "^11.0.0",
+    "lucide-react": "^0.344.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "framer-motion": "^11.0.0",
-    "zustand": "^4.5.0",
-    "lucide-react": "^0.344.0",
-    "axios": "^1.6.0",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "zustand": "^4.5.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",
@@ -57,23 +57,31 @@
       {
         "from": "python-backend",
         "to": "python-backend",
-        "filter": ["**/*"]
+        "filter": [
+          "**/*"
+        ]
       },
       {
         "from": "assets",
         "to": "assets",
-        "filter": ["**/*"]
+        "filter": [
+          "**/*"
+        ]
       }
     ],
     "win": {
       "target": [
         {
           "target": "nsis",
-          "arch": ["x64"]
+          "arch": [
+            "x64"
+          ]
         },
         {
           "target": "portable",
-          "arch": ["x64"]
+          "arch": [
+            "x64"
+          ]
         }
       ],
       "icon": "assets/icon.ico",

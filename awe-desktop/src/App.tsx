@@ -23,7 +23,7 @@ import SettingsScreen from './screens/SettingsScreen';
 import HistoryScreen from './screens/HistoryScreen';
 
 // Types
-import type { Screen } from './types';
+import type { Screen, LLMProvider } from './types';
 
 const App: React.FC = () => {
   const {
@@ -242,12 +242,12 @@ const styles: Record<string, React.CSSProperties> = {
 };
 
 // Default providers
-function getDefaultProviders() {
+function getDefaultProviders(): LLMProvider[] {
   return [
     {
       id: 'ollama',
       name: 'Ollama',
-      type: 'ollama',
+      type: 'ollama' as const,
       baseUrl: 'http://127.0.0.1:11434',
       models: [],
       isAvailable: true,
@@ -257,7 +257,7 @@ function getDefaultProviders() {
     {
       id: 'lm-studio',
       name: 'LM Studio',
-      type: 'local',
+      type: 'local' as const,
       baseUrl: 'http://127.0.0.1:1234',
       models: [],
       isAvailable: true,
@@ -267,7 +267,7 @@ function getDefaultProviders() {
     {
       id: 'openai',
       name: 'OpenAI API',
-      type: 'openai',
+      type: 'openai' as const,
       baseUrl: 'https://api.openai.com/v1',
       models: [
         { id: 'gpt-4o', name: 'GPT-4o', supportsVision: true },
@@ -280,7 +280,7 @@ function getDefaultProviders() {
     {
       id: 'anthropic',
       name: 'Anthropic Claude',
-      type: 'anthropic',
+      type: 'anthropic' as const,
       baseUrl: 'https://api.anthropic.com/v1',
       models: [
         { id: 'claude-3-opus', name: 'Claude 3 Opus', supportsVision: true },
@@ -293,7 +293,7 @@ function getDefaultProviders() {
     {
       id: 'custom',
       name: 'Custom Endpoint',
-      type: 'custom',
+      type: 'custom' as const,
       baseUrl: '',
       models: [],
       isAvailable: true,
