@@ -1,0 +1,17 @@
+# AWE Desktop Backend Dependencies
+# Core
+fastapi>=0.109.0
+uvicorn>=0.27.0
+python-multipart>=0.0.6
+aiohttp>=3.9.0
+
+# System monitoring
+psutil>=5.9.0
+
+# OCR (optional - install what you need)
+# pytesseract>=0.3.10
+# paddleocr>=2.7.0
+# paddlepaddle>=2.5.0
+
+# For development
+python-dotenv>=1.0.0
