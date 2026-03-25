@@ -40,7 +40,7 @@ AWE System is an AI-powered essay assessment platform that enables students to:
 
 ## 🔄 Dual-Track System
 
-### Track 1: Cloud-Based PWA
+### Track 1: Cloud-Based PWA (https://github.com/waleedmandour/awe-system)
 
 A Progressive Web App hosted on Vercel that uses cloud APIs for processing.
 
